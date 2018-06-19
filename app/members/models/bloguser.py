@@ -1,5 +1,8 @@
 from django.db import models
 
+__all__ = (
+    'BlogUser',
+)
 
 class BlogUser(models.Model):
     name = models.CharField(max_length=50)

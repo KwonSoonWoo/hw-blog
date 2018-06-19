@@ -2,6 +2,10 @@ from django.db import models
 
 from . import BlogUser
 
+__all__ = (
+    'UserInfo',
+)
+
 
 class UserInfo(models.Model):
     user = models.OneToOneField(
