@@ -14,3 +14,10 @@ class UserInfo(models.Model):
     )
     address = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=50)
+
+    def __str__(self):
+        return '{} {} {}'.format(
+            self.user,
+            self.address,
+            self.phone_number,
+        )

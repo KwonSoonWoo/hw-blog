@@ -16,3 +16,14 @@ class BlogUser(models.Model):
         related_name='block_friends',
         symmetrical=False,
     )
+
+    @property
+    def posts(self):
+        return f'내가 작성한 글 목록: {self.post_set.all()}'
+
+    @property
+    def comments(self):
+        return f'내가 작성한 댓글 목록: {self.my_comment.all()}'
+
+    def __str__(self):
+        return self.name

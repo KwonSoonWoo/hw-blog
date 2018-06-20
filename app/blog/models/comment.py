@@ -1,5 +1,6 @@
 from django.db import models
 
+from blog.models import Post
 from members.models import BlogUser
 
 __all__ = (
@@ -14,8 +15,19 @@ class Comment(models.Model):
         on_delete=models.CASCADE,
         related_name='my_comments',
     )
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+    )
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def like_users(self):
+        return self.comment_likes.all()
+
+    def __str__(self):
+        return f'{self.user}: {self.content}'
 
 
 class CommentLike(models.Model):
